@@ -1,9 +1,2 @@
-/**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
-int main(void)
-{
-    return (0);
-}
+#!/bin/bash
+/** /n *main - Entry point /n /n *Return: Always 0 (Succes) /n */ /n int main(void) /n { /n return (0); /n }
