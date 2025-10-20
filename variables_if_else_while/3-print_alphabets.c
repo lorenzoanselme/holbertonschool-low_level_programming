@@ -11,13 +11,13 @@ while (c <= 'z')
 {
 putchar(c);
 c++;
-char c = (c+'A');
+}
+c = 'A';
 while (c <= 'Z')
 {
 putchar(c);
 c++;
 }
-}
-putchar('\n');
+printf("\n");
 return (0);
 }
