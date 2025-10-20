@@ -1,2 +1,2 @@
 #!/bin/bash
-/** /n *main - Entry point /n /n *Return: Always 0 (Succes) /n */ /n int main(void) /n { /n return (0); /n }
+gcc -E "$CFILE" -o c
