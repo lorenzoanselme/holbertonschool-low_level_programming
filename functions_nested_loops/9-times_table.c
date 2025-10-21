@@ -13,7 +13,7 @@ while (row <= 9)
 col = 0;
 while (col <= 9)
 {
-prod = row * col;
+prod = row *col;
 if (col != 0)
 {
 _putchar(',');
