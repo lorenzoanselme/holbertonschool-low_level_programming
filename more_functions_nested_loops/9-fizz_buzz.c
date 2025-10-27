@@ -1,20 +1,23 @@
 #include <stdio.h>
 /**
-* main - Entry point
-*
-* Return : Always 0 (Success)
-*/
+ * main - affiche les nombres de 1 à 100 en remplaçant :
+ *        multiples de 3 par "Fizz", de 5 par "Buzz" et de 15 par "FizzBuzz"
+ *
+ * Return: Retourne 0
+ */
 int main(void)
 {
 	int i;
 
-	for (i = 0; i <= 100; i++)
+	for (i = 1; i <= 100; i++)
 	{
-		if (i % 3 == 0 && i % 5 == 0)
+		if ((i % 3 == 0) || (i % 5 == 0))
 		{
-			printf("FizzBuzz ");
-
-			if (i % 3 == 0)
+			if (i % 3 == 0 && i % 5 == 0)
+			{
+				printf("FizzBuzz ");
+			}
+			else if (i % 3 == 0)
 			{
 				printf("Fizz ");
 			}
@@ -25,8 +28,9 @@ int main(void)
 		}
 		else
 		{
-			printf("%d ", i);
+			printf("%d", i);
 		}
 	}
+
 	return (0);
 }
