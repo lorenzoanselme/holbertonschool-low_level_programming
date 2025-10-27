@@ -1,5 +1,4 @@
 #include "main.h"
-#include "main.h"
 /**
  * swap_int - takes a pointer
  * @a : valeur a
