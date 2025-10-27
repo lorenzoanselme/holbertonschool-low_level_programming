@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * rev_string - inverse une chaîne de caractères
  * @s: pointeur vers la chaîne à inverser
@@ -12,7 +11,9 @@ void rev_string(char *s)
 	int length;
 	char temp;
 
-	length = _strlen(s);
+	for (length = 0; s[length] != '\0'; length++)
+	{
+	}
 
 	for (i = 0; i < length / 2; i++)
 	{
