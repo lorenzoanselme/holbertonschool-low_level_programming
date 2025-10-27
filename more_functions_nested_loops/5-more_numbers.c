@@ -1,25 +1,22 @@
-#include "main.h"
+#include "../functions_nested_loops/main.h"
 /**
-* more_numbers - print numbers from 0 to 14 10 times
-*
-* Return : void
-*/
+ * more_numbers - Affiche 10 fois les nombres de 0 à 14
+ *
+ * Return: Rien
+ */
 void more_numbers(void)
 {
-	int j;
 	int i;
-	int k;
+	int j;
 
-	for (j = 0; 0 <= 9; j++)
+	for (i = 0; i <= 9; i++)
 	{
-		for (i = 0; i <= 9; i++)
+		for (j = 0; j <= 14; j++)
 		{
-			_putchar(i + '0');
+			if (j >= 10)
+				_putchar('0' + (j / 10));
+			_putchar('0' + (j % 10));
 		}
-		for (k = 0; i <= 4; k++)
-		{
-			_putchar(k + 10);
-		}
+		_putchar('\n');
 	}
-	_putchar('\n');
 }
