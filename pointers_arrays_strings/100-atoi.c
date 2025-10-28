@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _atoi - converts a string to an integer
+ * _atoi - converts a string to an integer (safe version)
  * @s: pointer to the string to convert
  *
  * Return: the converted integer
@@ -10,9 +10,13 @@ int _atoi(char *s)
 	int result;
 	int sign;
 	int found_digit = 0;
+	int max;
+	int min;
 
 	result = 0;
 	sign = 1;
+	max = 2147483647;
+	min = -2147483648;
 
 	for (; *s != '\0'; s++)
 	{
@@ -21,10 +25,17 @@ int _atoi(char *s)
 		else if (*s >= '0' && *s <= '9')
 		{
 			found_digit = 1;
+
+			if (sign == 1 && result > max)
+				return (max);
+			if (sign == -1 && -result < min)
+				return (min);
+
 			result = result * 10 + (*s - '0');
 		}
 		else if (found_digit)
 			break;
 	}
-	return (sign * result);
+
+	return (result * sign);
 }
