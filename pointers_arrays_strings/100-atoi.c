@@ -26,9 +26,9 @@ int _atoi(char *s)
 		{
 			found_digit = 1;
 
-			if (sign == 1 && result > max)
+			if (sign == 1 && result > (max - (*s - '0')) / 10)
 				return (max);
-			if (sign == -1 && -result < min)
+			if (sign == -1 && -result < (min + (*s - '0')) / 10)
 				return (min);
 
 			result = result * 10 + (*s - '0');
