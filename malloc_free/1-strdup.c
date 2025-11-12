@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+
 /**
  * _strdup - retourne un pointeur vers une nouvelle chaîne dupliquée
  * @str: chaîne à dupliquer
@@ -9,7 +10,7 @@
 char *_strdup(char *str)
 {
 	char *dup;
-	unsigned int i, len;
+	unsigned int i, len = 0;
 
 	if (str == NULL)
 		return (NULL);
