@@ -2,10 +2,10 @@
 #include "dog.h"
 
 /**
- * new_dog - creates a new dog
- * @name: dog's name
- * @age: dog's age
- * @owner: dog's owner
+ * new_dog - creates a new dog structure
+ * @name: name of the dog
+ * @age: age of the dog
+ * @owner: owner of the dog
  *
  * Return: pointer to new dog_t, or NULL on failure
  */
@@ -13,9 +13,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
 	char *n_copy, *o_copy;
-	int i, len1 = 0, len2 = 0;
+	int len1 = 0, len2 = 0, i;
 
-	if (name == NULL || owner == NULL)
+	if (!name || !owner)
 		return (NULL);
 
 	while (name[len1])
@@ -24,19 +24,18 @@ dog_t *new_dog(char *name, float age, char *owner)
 		len2++;
 
 	d = malloc(sizeof(dog_t));
-	if (d == NULL)
+	if (!d)
 		return (NULL);
 
 	n_copy = malloc(len1 + 1);
-	if (n_copy == NULL)
-		free(d);
-		return (NULL);
-
 	o_copy = malloc(len2 + 1);
-	if (o_copy == NULL)
+	if (!n_copy || !o_copy)
+	{
 		free(n_copy);
+		free(o_copy);
 		free(d);
 		return (NULL);
+	}
 
 	for (i = 0; i < len1; i++)
 		n_copy[i] = name[i];
