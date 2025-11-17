@@ -2,6 +2,32 @@
 #include <stdlib.h>
 
 /**
+ * _putchar - writes a character to stdout
+ * @c: character to print
+ * Return: 1
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+ * _puts - prints a string followed by a newline
+ * @s: string
+ */
+void _puts(char *s)
+{
+	int i = 0;
+
+	while (s[i])
+	{
+		_putchar(s[i]);
+		i++;
+	}
+	_putchar('\n');
+}
+
+/**
  * _isdigit - checks if a string contains only digits
  * @s: string to check
  *
@@ -18,6 +44,29 @@ int _isdigit(char *s)
 		i++;
 	}
 	return (1);
+}
+
+/**
+ * print_number - prints the number stored in array
+ * @s: array of digits
+ * @size: size of the array
+ */
+void print_number(char *s, int size)
+{
+	int i = 0;
+
+	while (i < size && s[i] == '0')
+		i++;
+
+	if (i == size)
+		_putchar('0');
+
+	while (i < size)
+	{
+		_putchar(s[i]);
+		i++;
+	}
+	_putchar('\n');
 }
 
 /**
