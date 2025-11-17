@@ -2,9 +2,10 @@
 #include <stdlib.h>
 
 /**
- * _isdigit - checks if a string is composed only of digits
+ * _isdigit - checks if a string contains only digits
  * @s: string to check
- * Return: 1 if digits only, 0 otherwise
+ *
+ * Return: 1 if all digits, 0 otherwise
  */
 int _isdigit(char *s)
 {
@@ -20,54 +21,56 @@ int _isdigit(char *s)
 }
 
 /**
- * _puts - prints a string using _putchar
- * @s: string
+ * init_result - initializes result buffer with '0'
+ * @res: pointer to result buffer
+ * @size: buffer size
  */
-void _puts(char *s)
+void init_result(char *res, int size)
 {
-	int i = 0;
+	int i;
 
-	while (s[i])
-	{
-		_putchar(s[i]);
-		i++;
-	}
-	_putchar('\n');
+	for (i = 0; i < size; i++)
+		res[i] = '0';
 }
 
 /**
- * print_number - prints an integer stored in a char array
- * @s: array of digits
- * @size: length of the array
+ * multiply - performs the big integer multiplication
+ * @num1: first number as string
+ * @num2: second number as string
+ * @res: result buffer
+ * @len1: length of num1
+ * @len2: length of num2
  */
-void print_number(char *s, int size)
+void multiply(char *num1, char *num2, char *res, int len1, int len2)
 {
-	int i = 0;
+	int i, j, carry, prod;
 
-	while (i < size && s[i] == '0')
-		i++;
-
-	if (i == size)
-		_putchar('0');
-
-	while (i < size)
+	for (i = len1 - 1; i >= 0; i--)
 	{
-		_putchar(s[i]);
-		i++;
+		carry = 0;
+		for (j = len2 - 1; j >= 0; j--)
+		{
+			prod = (num1[i] - '0') * (num2[j] - '0');
+			prod += (res[i + j + 1] - '0') + carry;
+
+			res[i + j + 1] = (prod % 10) + '0';
+			carry = prod / 10;
+		}
+		res[i + j + 1] += carry;
 	}
-	_putchar('\n');
 }
 
 /**
  * main - multiplies two positive numbers
  * @argc: argument count
  * @argv: argument vector
+ *
  * Return: 0
  */
 int main(int argc, char **argv)
 {
 	char *num1, *num2, *res;
-	int len1 = 0, len2 = 0, i, j, carry, prod;
+	int len1 = 0, len2 = 0;
 
 	if (argc != 3 || !_isdigit(argv[1]) || !_isdigit(argv[2]))
 	{
@@ -85,24 +88,13 @@ int main(int argc, char **argv)
 
 	res = malloc(len1 + len2);
 	if (!res)
-		return (1);
-
-	for (i = 0; i < len1 + len2; i++)
-		res[i] = '0';
-
-	for (i = len1 - 1; i >= 0; i--)
 	{
-		carry = 0;
-		for (j = len2 - 1; j >= 0; j--)
-		{
-			prod = (num1[i] - '0') * (num2[j] - '0')
-			       + (res[i + j + 1] - '0') + carry;
-			res[i + j + 1] = (prod % 10) + '0';
-			carry = prod / 10;
-		}
-		res[i + j + 1] += carry;
+		_puts("Error");
+		exit(98);
 	}
 
+	init_result(res, len1 + len2);
+	multiply(num1, num2, res, len1, len2);
 	print_number(res, len1 + len2);
 	free(res);
 

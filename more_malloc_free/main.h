@@ -9,4 +9,6 @@ int _putchar(char c);
 int _isdigit(char *s);
 void _puts(char *s);
 void print_number(char *s, int size);
+void init_result(char *res, int size);
+void multiply(char *num1, char *num2, char *res, int len1, int len2);
 #endif
