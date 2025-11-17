@@ -1,17 +1,5 @@
 #include <stdlib.h>
-#include <unistd.h>
 #include "main.h"
-
-/**
- * _putchar - writes a character to stdout
- * @c: character to print
- *
- * Return: 1
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
 
 /**
  * _puts - prints a string followed by a newline
