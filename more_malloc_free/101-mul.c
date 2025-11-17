@@ -1,9 +1,11 @@
-#include "main.h"
 #include <stdlib.h>
+#include <unistd.h>
+#include "main.h"
 
 /**
  * _putchar - writes a character to stdout
  * @c: character to print
+ *
  * Return: 1
  */
 int _putchar(char c)
@@ -111,7 +113,7 @@ void multiply(char *num1, char *num2, char *res, int len1, int len2)
 
 /**
  * main - multiplies two positive numbers
- * @argc: argument count
+ * @argc: number of arguments
  * @argv: argument vector
  *
  * Return: 0
