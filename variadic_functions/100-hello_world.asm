@@ -1,17 +1,17 @@
 section .data
-    msg db "Hello, World", 10   ; 10 = '\n'
-    len equ $ - msg             ; longueur du message
+    msg db "Hello, World", 10
+    len equ $ - msg
 
 section .text
-    global _start
+    global main
 
-_start:
-    mov rax, 1         ; syscall 1 = write
-    mov rdi, 1         ; fd 1 = stdout
-    mov rsi, msg       ; adresse du texte
-    mov rdx, len       ; longueur du texte
-    syscall            ; appel système
+main:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, msg
+    mov rdx, len
+    syscall
 
-    mov rax, 60        ; syscall 60 = exit
-    mov rdi, 0         ; code retour 0
+    mov rax, 60
+    mov rdi, 0
     syscall
