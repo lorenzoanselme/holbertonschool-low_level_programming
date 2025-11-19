@@ -11,7 +11,7 @@
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	int i = 0, p = 0;
+	int i = 0;
 	char *str, *sep = "";
 
 	va_start(args, format);
@@ -22,12 +22,16 @@ void print_all(const char * const format, ...)
 		    format[i] == 'f' || format[i] == 's')
 		{
 			printf("%s", sep);
+
 			if (format[i] == 'c')
 				printf("%c", va_arg(args, int));
+
 			if (format[i] == 'i')
 				printf("%d", va_arg(args, int));
+
 			if (format[i] == 'f')
 				printf("%f", va_arg(args, double));
+
 			if (format[i] == 's')
 			{
 				str = va_arg(args, char *);
@@ -36,6 +40,7 @@ void print_all(const char * const format, ...)
 				if (str)
 					printf("%s", str);
 			}
+
 			sep = ", ";
 		}
 		i++;
