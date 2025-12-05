@@ -15,19 +15,16 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 
-	/* Open file in write + append mode, DO NOT create file */
 	fd = open(filename, O_WRONLY | O_APPEND);
 	if (fd == -1)
-		return (-1); /* file doesn't exist OR cannot open */
+		return (-1);
 
-	/* If text_content is NULL: nothing to write, but success */
 	if (text_content == NULL)
 	{
 		close(fd);
 		return (1);
 	}
 
-	/* Calculate string length (no strlen allowed) */
 	while (text_content[length])
 		length++;
 
